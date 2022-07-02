@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:timezone_project/controller/theme_controller.dart';
+
+import 'utils/theme.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -9,30 +14,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'TimeZone Project',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: 'TimeZone Project'),
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      home: MyHomePage(title: 'TimeZone Project'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class MyHomePage extends StatelessWidget {
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+  final themeController = Get.put(ThemeController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.isDarkMode
+                  ? themeController.changeThemeMode(ThemeMode.light)
+                  : themeController.changeThemeMode(ThemeMode.dark);
+            },
+            icon: const Icon(Icons.lightbulb),
+          )
+        ],
       ),
       body: const Center(),
     );
