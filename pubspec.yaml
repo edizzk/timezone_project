@@ -43,7 +43,7 @@ dependencies:
 
 flutter_native_splash:
   image: assets/dop.png
-  color: "42a5f5"
+  color: "002359"
 
 dev_dependencies:
   flutter_test:
