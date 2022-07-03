@@ -8,8 +8,8 @@ Container searchWidget () {
 
   return Container(
     alignment: Alignment.bottomCenter,
-    height: 36,
-    width: 248,
+    height: 40,
+    width: 300,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(30),
       color: Colors.white,
