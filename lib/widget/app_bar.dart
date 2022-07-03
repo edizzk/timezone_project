@@ -48,7 +48,7 @@ Widget appBarTextStack(String title, ThemeController themeController, BuildConte
       Padding(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
         child:
-        textWithSize(DateFormat('HH:mm').format(date), Theme.of(context).accentColor, 24, isBold: true),
+        textWithSize(DateFormat('HH : mm').format(date), Theme.of(context).accentColor, 24, isBold: true),
       ),
        textWithSize("${date.day} ${monthFormatter(date)}, ${dayFormatter(date)}", Theme.of(context).accentColor, 16, isBold: true),
     ],
