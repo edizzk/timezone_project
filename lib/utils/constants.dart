@@ -1,0 +1,1 @@
+const String timezoneUrl = "http://worldtimeapi.org/api/timezone";
