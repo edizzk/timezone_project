@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:timezone_project/controller/timezone_controller.dart';
 import '../utils/date_formatter.dart';
 import '../widget/text_widget.dart';
 import 'package:intl/intl.dart';
@@ -7,14 +8,14 @@ import 'package:intl/intl.dart';
 import '../controller/theme_controller.dart';
 import 'search_widget.dart';
 
-PreferredSize buildAppBar(String title, BuildContext context, ThemeController themeController) {
+PreferredSize buildAppBar(String title, BuildContext context, ThemeController themeController, TimeZoneController timeZoneController) {
   final appBarHeight = MediaQuery.of(context).size.height/5.5;
   return PreferredSize(
     preferredSize: Size.fromHeight(appBarHeight),
     child: Stack(
       children: [
         Padding(padding: const EdgeInsets.only(bottom: 12), child: appBarMethod(appBarHeight, title, themeController, context)),
-        Align(alignment: Alignment.bottomCenter, child: searchWidget()),
+        Align(alignment: Alignment.bottomCenter, child: searchWidget(timeZoneController)),
       ],
     ),
   );

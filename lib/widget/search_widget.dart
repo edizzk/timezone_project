@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:timezone_project/controller/timezone_controller.dart';
 
 import '../utils/theme.dart';
 
-Container searchWidget () {
-
-  final controller = TextEditingController();
-
+Container searchWidget (TimeZoneController timeZoneController) {
   return Container(
     alignment: Alignment.bottomCenter,
     height: 40,
@@ -17,10 +15,12 @@ Container searchWidget () {
     ),
     padding: const EdgeInsets.symmetric(horizontal: 8),
     child: TextField(
-      controller: controller,
-      decoration: const InputDecoration(
-
-        icon: Icon(Icons.search, color: Themes.searchBarTextColor),
+      showCursor: false,
+      onChanged: (value) {timeZoneController.onTextChanged(value);},
+      decoration: InputDecoration(
+        hintText: "Arama",
+        hintStyle: TextStyle(color: Themes.searchBarTextColor.withOpacity(0.5)),
+        icon: const Icon(Icons.search, color: Themes.searchBarTextColor),
       ),
     ),
   );

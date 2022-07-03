@@ -17,7 +17,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: buildAppBar(title, context, themeController),
+      appBar: buildAppBar(title, context, themeController, timezoneController),
       backgroundColor: Theme.of(context).primaryColor,
       body: Obx(() =>
         timezoneController.isLoading.value
@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 50),
           child: ListView.builder(
-            itemCount: timezoneController.timezoneList.length,
+            itemCount: timezoneController.isSearchEmpty.value ? timezoneController.timezoneList.length : timezoneController.searchTimezoneList.length,
             itemBuilder: (BuildContext context, int index) {
               return buildCard(context, index, timezoneController);
             },

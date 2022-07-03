@@ -6,7 +6,9 @@ import '../repositories/timezone_repo.dart';
 class TimeZoneController extends GetxController{
 
   var timezoneList = <TimeZoneModel>[].obs;
+  var searchTimezoneList = <TimeZoneModel>[].obs;
   var isLoading = true.obs;
+  var isSearchEmpty = true.obs;
 
   @override
   void onInit() {
@@ -26,5 +28,22 @@ class TimeZoneController extends GetxController{
     }
   }
 
+  void onTextChanged(String text){
+    isSearchEmpty.value = false;
+    searchTimezoneList.clear();
+    if(text.isEmpty){
+      for (var element in timezoneList) {
+        searchTimezoneList.add(element);
+      }
+    }
+    else{
+      for (var element in timezoneList) {
+        if(element.timezone.toLowerCase().contains(text))
+        {
+          searchTimezoneList.add(element);
+        }
+      }
+    }
+  }
 
 }

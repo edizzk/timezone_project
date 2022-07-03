@@ -5,7 +5,7 @@ import 'package:timezone_project/view/detail_view.dart';
 GestureDetector buildCard(BuildContext context, int index, TimeZoneController timeZoneController) {
   return GestureDetector(
     onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DetailViewPage()));
+      navigateToDetailView(context);
     },
     child: Stack(
       children: [
@@ -21,7 +21,11 @@ GestureDetector buildCard(BuildContext context, int index, TimeZoneController ti
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(padding: const EdgeInsets.only(left: 20) ,child: Text(timeZoneController.timezoneList[index].timezone)),
+                  Padding(padding: const EdgeInsets.only(left: 20) ,child: Text(
+                      timeZoneController.isSearchEmpty.value
+                          ? timeZoneController.timezoneList[index].timezone
+                          : timeZoneController.searchTimezoneList[index].timezone
+                  ),),
                 ],
               ),
             ),
@@ -40,7 +44,7 @@ GestureDetector buildCard(BuildContext context, int index, TimeZoneController ti
                     color: Theme.of(context).primaryColor,
                   )
                 ),
-                onPressed: () {},
+                onPressed: () {navigateToDetailView(context);},
                 child: Icon(Icons.arrow_forward_ios, size: 18, color: Theme.of(context).canvasColor),
               ),
             ),
@@ -49,3 +53,5 @@ GestureDetector buildCard(BuildContext context, int index, TimeZoneController ti
     ),
   );
 }
+
+void navigateToDetailView(BuildContext context) => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DetailViewPage()));
