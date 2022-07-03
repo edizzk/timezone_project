@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../utils/date_formatter.dart';
+import '../widget/text_widget.dart';
+import 'package:intl/intl.dart';
 
 import '../controller/theme_controller.dart';
 import 'search_widget.dart';
@@ -37,29 +40,19 @@ AppBar appBarMethod(double appBarHeight, String title, ThemeController themeCont
         );
 }
 
-Column appBarTextStack(String title, ThemeController themeController, BuildContext context) {
+Widget appBarTextStack(String title, ThemeController themeController, BuildContext context) {
+  var date = DateTime.now();
   return Column(
     mainAxisSize: MainAxisSize.max,
      crossAxisAlignment: CrossAxisAlignment.start,
      children: [
-       Text("Günaydın, Özgür!",
-          style: TextStyle(
-              color: Theme.of(context).accentColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold)),
+      textWithSize("Günaydın, Özgür!", Theme.of(context).accentColor, 16, isBold: true),
       Padding(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
-        child: Text("09 : 54",
-            style: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontSize: 24,
-                fontWeight: FontWeight.bold)),
+        child:
+        textWithSize(DateFormat('HH:mm').format(date), Theme.of(context).accentColor, 24, isBold: true),
       ),
-      Text("8 Haziran, Çarşamba",
-          style: TextStyle(
-              color: Theme.of(context).accentColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold)),
+       textWithSize("${date.day} ${monthFormatter(date)}, ${dayFormatter(date)}", Theme.of(context).accentColor, 16, isBold: true),
     ],
   );
 }
