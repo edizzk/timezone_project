@@ -19,15 +19,23 @@ class MyHomePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: buildAppBar(title, context, themeController),
       backgroundColor: Theme.of(context).primaryColor,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 50),
-        child: ListView.builder(
-          itemCount: timezoneController.timezoneList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return buildCard(context, index, timezoneController);
-         },
+      body: Obx(() =>
+        timezoneController.isLoading.value
+            ?
+        const Center(
+          child: CircularProgressIndicator(),
+        )
+            :
+        Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 50),
+          child: ListView.builder(
+            itemCount: timezoneController.timezoneList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return buildCard(context, index, timezoneController);
+            },
+          ),
         ),
-      )
+      ),
     );
   }
 }
