@@ -44,6 +44,8 @@ dependencies:
   #API
   http: ^0.13.4
 
+  intl: ^0.17.0
+
 flutter_native_splash:
   image: assets/dop.png
   color: "002359"
