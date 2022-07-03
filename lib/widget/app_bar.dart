@@ -8,9 +8,7 @@ import '../controller/theme_controller.dart';
 import 'search_widget.dart';
 
 PreferredSize buildAppBar(String title, BuildContext context, ThemeController themeController) {
-
   final appBarHeight = MediaQuery.of(context).size.height/5.5;
-
   return PreferredSize(
     preferredSize: Size.fromHeight(appBarHeight),
     child: Stack(
@@ -22,22 +20,22 @@ PreferredSize buildAppBar(String title, BuildContext context, ThemeController th
   );
 }
 
-AppBar appBarMethod(double appBarHeight, String title, ThemeController themeController, BuildContext context) {
+Widget appBarMethod(double appBarHeight, String title, ThemeController themeController, BuildContext context) {
   return AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          toolbarHeight: appBarHeight,
-          title: Padding(padding: const EdgeInsets.only(left: 20, bottom: 10 ), child: appBarTextStack(title, themeController, context)),
-          actions: [
-            iconButton(themeController, context),
-          ],
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
-              color: Theme.of(context).bottomAppBarColor,
-            ),
-          ),
-        );
+    backgroundColor: Colors.transparent,
+    elevation: 0.0,
+    toolbarHeight: appBarHeight,
+    title: Padding(padding: const EdgeInsets.only(left: 20, bottom: 10 ), child: appBarTextStack(title, themeController, context)),
+    actions: [
+      Padding(padding: const EdgeInsets.only(right: 20), child: appBarIcon(themeController, context)),
+    ],
+    flexibleSpace: Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+        color: Theme.of(context).bottomAppBarColor,
+      ),
+    ),
+  );
 }
 
 Widget appBarTextStack(String title, ThemeController themeController, BuildContext context) {
@@ -57,16 +55,28 @@ Widget appBarTextStack(String title, ThemeController themeController, BuildConte
   );
 }
 
-
-IconButton iconButton(ThemeController themeController, BuildContext context) {
-  return IconButton(
+Widget appBarIcon(ThemeController themeController, BuildContext context) {
+  return SizedBox(
+    height: 32,
+    width: 32,
+    child: RawMaterialButton(
+      fillColor: Theme.of(context).accentColor,
+      shape: const CircleBorder(
+          side: BorderSide(
+            width: 2,
+          )
+      ),
       onPressed: () {
         Get.isDarkMode
             ? themeController.changeThemeMode(ThemeMode.light)
             : themeController.changeThemeMode(ThemeMode.dark);
         themeController.changeDark(Get.isDarkMode);
       },
-      color: Theme.of(context).accentColor,
-      icon: Get.isDarkMode ? const Icon(Icons.lightbulb): const Icon(Icons.lightbulb),
-    );
+      child: Icon(
+          Get.isDarkMode ?  Icons.sunny : Icons.nights_stay_outlined,
+          size: 18,
+          color: Theme.of(context).primaryColor,
+      ),
+    ),
+  );
 }
