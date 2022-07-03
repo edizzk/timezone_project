@@ -41,7 +41,7 @@ GestureDetector buildCard(BuildContext context, int index, TimeZoneController ti
                   )
                 ),
                 onPressed: () {},
-                child: Icon(Icons.arrow_forward_ios, size: 18, color: Theme.of(context).accentColor),
+                child: Icon(Icons.arrow_forward_ios, size: 18, color: Theme.of(context).canvasColor),
               ),
             ),
         ),

@@ -9,7 +9,7 @@ Widget clockContainer(BuildContext context, String text) {
         borderRadius: BorderRadius.circular(24),
         color: Theme.of(context).bottomAppBarColor,
       ),
-      child: Center(child: textWithSize(isBold: true, text, Theme.of(context).accentColor, 54),
+      child: Center(child: textWithSize(isBold: true, text, Theme.of(context).canvasColor, 54),
       ),
   );
 }

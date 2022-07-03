@@ -11,7 +11,7 @@ class DetailViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final appBarHeight = MediaQuery.of(context).size.height/10;
-    final accentColor = Theme.of(context).accentColor;
+    final canvasColor = Theme.of(context).canvasColor;
     var date = DateTime.now();
 
     return Scaffold(
@@ -24,34 +24,34 @@ class DetailViewPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 clockContainer(context, "13"),
-                textWithSize(":", accentColor, 54, isBold: true),
+                textWithSize(":", canvasColor, 54, isBold: true),
                 clockContainer(context, "48"),
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height/20),
-            textWithSize("Abidjan", accentColor, 24, isBold: true),
+            textWithSize("Abidjan", canvasColor, 24, isBold: true),
             SizedBox(height: MediaQuery.of(context).size.height/80),
-            textWithSize("Africa", accentColor, 20),
+            textWithSize("Africa", canvasColor, 20),
             SizedBox(height: MediaQuery.of(context).size.height/80),
-            textWithSize("${dayFormatter(date)}, GMT +01:00", accentColor, 20),
+            textWithSize("${dayFormatter(date)}, GMT +01:00", canvasColor, 20),
             SizedBox(height: MediaQuery.of(context).size.height/80),
-            textWithSize("${monthFormatter(date)} ${date.day}, ${date.year}", accentColor, 20),
+            textWithSize("${monthFormatter(date)} ${date.day}, ${date.year}", canvasColor, 20),
           ],
         ),
     );
   }
 
   AppBar buildAppBar(BuildContext context, double appBarHeight) {
-    final accentColor = Theme.of(context).accentColor;
+    final canvasColor = Theme.of(context).canvasColor;
     return AppBar(
         title: Padding(
             padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/7),
-            child: Text("WORLD TIME", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: accentColor))),
+            child: Text("WORLD TIME", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: canvasColor))),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         toolbarHeight: appBarHeight,
         leading: GestureDetector(
-          child: Icon(Icons.arrow_back, color: accentColor),
+          child: Icon(Icons.arrow_back, color: canvasColor),
           onTap: () {Navigator.pop(context);},
         ),
         flexibleSpace: Container(

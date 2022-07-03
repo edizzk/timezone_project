@@ -44,13 +44,13 @@ Widget appBarTextStack(String title, ThemeController themeController, BuildConte
     mainAxisSize: MainAxisSize.max,
      crossAxisAlignment: CrossAxisAlignment.start,
      children: [
-      textWithSize("Günaydın, Özgür!", Theme.of(context).accentColor, 16, isBold: true),
+      textWithSize("Günaydın, Özgür!", Theme.of(context).canvasColor, 16, isBold: true),
       Padding(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
         child:
-        textWithSize(DateFormat('HH : mm').format(date), Theme.of(context).accentColor, 24, isBold: true),
+        textWithSize(DateFormat('HH : mm').format(date), Theme.of(context).canvasColor, 24, isBold: true),
       ),
-       textWithSize("${date.day} ${monthFormatter(date)}, ${dayFormatter(date)}", Theme.of(context).accentColor, 16, isBold: true),
+       textWithSize("${date.day} ${monthFormatter(date)}, ${dayFormatter(date)}", Theme.of(context).canvasColor, 16, isBold: true),
     ],
   );
 }
@@ -60,7 +60,7 @@ Widget appBarIcon(ThemeController themeController, BuildContext context) {
     height: 32,
     width: 32,
     child: RawMaterialButton(
-      fillColor: Theme.of(context).accentColor,
+      fillColor: Theme.of(context).canvasColor,
       shape: const CircleBorder(
           side: BorderSide(
             width: 2,
