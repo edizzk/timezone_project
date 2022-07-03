@@ -16,6 +16,7 @@ Container searchWidget (TimeZoneController timeZoneController) {
     padding: const EdgeInsets.symmetric(horizontal: 8),
     child: TextField(
       showCursor: false,
+      style: const TextStyle(color: Themes.searchBarTextColor),
       onChanged: (value) {timeZoneController.onTextChanged(value);},
       decoration: InputDecoration(
         hintText: "Arama",
