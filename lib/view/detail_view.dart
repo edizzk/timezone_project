@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timezone_project/utils/date_formatter.dart';
 import 'package:timezone_project/widget/text_widget.dart';
 
 import '../widget/clock_container.dart';
@@ -11,6 +12,7 @@ class DetailViewPage extends StatelessWidget {
 
     final appBarHeight = MediaQuery.of(context).size.height/10;
     final accentColor = Theme.of(context).accentColor;
+    var date = DateTime.now();
 
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
@@ -31,9 +33,9 @@ class DetailViewPage extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height/80),
             textWithSize("Africa", accentColor, 20),
             SizedBox(height: MediaQuery.of(context).size.height/80),
-            textWithSize("Çarşamba, GMT +01:00", accentColor, 20),
+            textWithSize("${dayFormatter(date)}, GMT +01:00", accentColor, 20),
             SizedBox(height: MediaQuery.of(context).size.height/80),
-            textWithSize("Haziran 8, 2022", accentColor, 20),
+            textWithSize("${monthFormatter(date)} ${date.day}, ${date.year}", accentColor, 20),
           ],
         ),
     );
