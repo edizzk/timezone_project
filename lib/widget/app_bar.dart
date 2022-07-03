@@ -24,7 +24,7 @@ AppBar appBarMethod(double appBarHeight, String title, ThemeController themeCont
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           toolbarHeight: appBarHeight,
-          title: Padding(padding: const EdgeInsets.only(left: 10, bottom: 10), child: appBarTextStack(title, themeController, context)),
+          title: Padding(padding: const EdgeInsets.only(left: 20, bottom: 10 ), child: appBarTextStack(title, themeController, context)),
           actions: [
             iconButton(themeController, context),
           ],
@@ -45,20 +45,20 @@ Column appBarTextStack(String title, ThemeController themeController, BuildConte
        Text("Günaydın, Özgür!",
           style: TextStyle(
               color: Theme.of(context).accentColor,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold)),
       Padding(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
         child: Text("09 : 54",
             style: TextStyle(
                 color: Theme.of(context).accentColor,
-                fontSize: 26,
+                fontSize: 24,
                 fontWeight: FontWeight.bold)),
       ),
       Text("8 Haziran, Çarşamba",
           style: TextStyle(
               color: Theme.of(context).accentColor,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold)),
     ],
   );
