@@ -25,7 +25,9 @@ AppBar appBarMethod(double appBarHeight, String title, ThemeController themeCont
           elevation: 0.0,
           toolbarHeight: appBarHeight,
           title: Padding(padding: const EdgeInsets.only(left: 10, bottom: 10), child: appBarTextStack(title, themeController, context)),
-
+          actions: [
+            iconButton(themeController, context),
+          ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
@@ -60,4 +62,18 @@ Column appBarTextStack(String title, ThemeController themeController, BuildConte
               fontWeight: FontWeight.bold)),
     ],
   );
+}
+
+
+IconButton iconButton(ThemeController themeController, BuildContext context) {
+  return IconButton(
+      onPressed: () {
+        Get.isDarkMode
+            ? themeController.changeThemeMode(ThemeMode.light)
+            : themeController.changeThemeMode(ThemeMode.dark);
+        themeController.changeDark(Get.isDarkMode);
+      },
+      color: Theme.of(context).accentColor,
+      icon: Get.isDarkMode ? const Icon(Icons.lightbulb): const Icon(Icons.lightbulb),
+    );
 }
