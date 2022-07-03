@@ -41,6 +41,9 @@ dependencies:
   #SPLASH SCREEN
   flutter_native_splash: ^2.2.3+1
 
+  #API
+  http: ^0.13.4
+
 flutter_native_splash:
   image: assets/dop.png
   color: "002359"
