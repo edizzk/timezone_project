@@ -3,9 +3,26 @@ import 'package:get/get.dart';
 
 class ThemeController extends GetxController {
 
-  ThemeMode get theme => Get.isDarkMode ? ThemeMode.dark : ThemeMode.light;
+  final Rx<ThemeMode> _theme;
+  final Rx<bool> _isDark;
 
-  void changeTheme(ThemeData theme) => Get.changeTheme(theme);
-  void changeThemeMode(ThemeMode themeMode) => Get.changeThemeMode(themeMode);
+  ThemeController(ThemeMode theme, bool isDark) : _theme = theme.obs, _isDark = isDark.obs;
+
+  void changeThemeMode(ThemeMode themeMode) {
+    Get.changeThemeMode(themeMode);
+    _theme(themeMode);
+  }
+
+  void changeDark(bool isDarKnow) {
+    _isDark(isDarKnow);
+  }
+
+  bool isDark() {
+    return _isDark.value;
+  }
+
+  ThemeMode getTheme() {
+    return _theme.value;
+  }
 
 }
